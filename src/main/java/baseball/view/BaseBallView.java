@@ -7,4 +7,8 @@ public class BaseBallView {
 		System.out.print("숫자를 입력해주세요 : ");
 		return Console.readLine();
 	}
+
+	public static void error(String msg) {
+		System.out.println("[ERROR] " + msg);
+	}
 }
