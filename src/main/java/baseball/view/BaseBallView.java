@@ -6,7 +6,7 @@ import nextstep.utils.Console;
 public class BaseBallView {
 	public static String inputNumber() {
 		System.out.print("숫자를 입력해주세요 : ");
-		return Console.readLine();
+		return consoleInput();
 	}
 
 	public static void error(String message) {
@@ -36,7 +36,10 @@ public class BaseBallView {
 
 	public static String inputEndSelect() {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		return Console.readLine();
+		return consoleInput();
 	}
 
+	private static String consoleInput() {
+		return Console.readLine().replaceAll(" ", "");
+	}
 }
