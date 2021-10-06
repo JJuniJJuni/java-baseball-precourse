@@ -21,4 +21,11 @@ public class BaseBallServiceTest {
 	public void 입력값_검증(String input) {
 		assertTrue(baseBallService.validateInputValue(new BaseBall(input)));
 	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"12", "ac", "테스트1", "1bc"})
+	public void 종료후_입력값_오류_검증(String input) {
+		assertThrows(IllegalArgumentException.class, () -> baseBallService.validateEndSelect(input));
+	}
+
 }

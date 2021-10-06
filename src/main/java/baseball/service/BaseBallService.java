@@ -29,4 +29,10 @@ public class BaseBallService {
 		}
 		return score;
 	}
+
+	public void validateEndSelect(String endSelect) {
+		if (!endSelect.equals("1") && !endSelect.equals("2")) {
+			throw new IllegalArgumentException("입력 값이 옳지 않습니다. 1이나 2를 입력해주세요");
+		}
+	}
 }

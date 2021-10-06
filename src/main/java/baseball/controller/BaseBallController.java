@@ -7,15 +7,10 @@ import baseball.service.BaseBallService;
 import baseball.view.BaseBallView;
 
 public class BaseBallController {
-	BaseBallGame baseBallGame;
+	private BaseBallGame baseBallGame = new BaseBallGame();
 	private static final BaseBallService baseBallService = new BaseBallService();
 
 	public void run() {
-		start();
-		proceed();
-	}
-
-	private void proceed() {
 		boolean nextTurn = true;
 		while (nextTurn) {
 			nextTurn = turn();
@@ -23,6 +18,7 @@ public class BaseBallController {
 	}
 
 	private boolean turn() {
+		System.out.println(baseBallGame.getBaseBall().getNumber());
 		BaseBall input = new BaseBall(BaseBallView.inputNumber());
 		if (isNotRightInput(input)) {
 			return true;
@@ -46,13 +42,38 @@ public class BaseBallController {
 	private boolean processInput(BaseBall input) {
 		Score score = baseBallService.compute(baseBallGame, input);
 		if (baseBallGame.isEnd()) {
-			return false;
+			return end();
 		}
 		BaseBallView.score(score);
 		return true;
 	}
 
-	private void start() {
-		baseBallGame = new BaseBallGame();
+	private boolean end() {
+		boolean isNotRightSelect = true;
+		String endSelect = "";
+		BaseBallView.endMessage();
+		while (isNotRightSelect) {
+			endSelect = BaseBallView.inputEndSelect();
+			isNotRightSelect = validateRightSelect(endSelect);
+		}
+		return playAgain(endSelect);
+	}
+
+	private boolean validateRightSelect(String endSelectInput) {
+		try {
+			baseBallService.validateEndSelect(endSelectInput);
+			return false;
+		} catch (IllegalArgumentException e) {
+			BaseBallView.error(e.getMessage());
+			return true;
+		}
+	}
+
+	private boolean playAgain(String endSelectInput) {
+		if (endSelectInput.equals("1")) {
+			baseBallGame = new BaseBallGame();
+			return true;
+		}
+		return false;
 	}
 }
