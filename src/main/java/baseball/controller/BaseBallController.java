@@ -18,7 +18,6 @@ public class BaseBallController {
 	}
 
 	private boolean turn() {
-		System.out.println(baseBallGame.getBaseBall().getNumber());
 		BaseBall input = new BaseBall(BaseBallView.inputNumber());
 		if (isNotRightInput(input)) {
 			return true;
@@ -41,10 +40,10 @@ public class BaseBallController {
 
 	private boolean processInput(BaseBall input) {
 		Score score = baseBallService.compute(baseBallGame, input);
+		BaseBallView.score(score);
 		if (baseBallGame.isEnd()) {
 			return end();
 		}
-		BaseBallView.score(score);
 		return true;
 	}
 

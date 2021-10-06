@@ -22,8 +22,8 @@ public class BaseBallView {
 
 	private static String getScoreMessage(int stirkeCount, int ballCount) {
 		StringBuilder message = new StringBuilder();
-		message.append(stirkeCount > 0 ? String.format("%d 스트라이크 ", stirkeCount) : "");
-		message.append(ballCount > 0 ? String.format("%d 볼", ballCount) : "");
+		message.append(stirkeCount > 0 ? String.format("%d스트라이크 ", stirkeCount) : "");
+		message.append(ballCount > 0 ? String.format("%d볼", ballCount) : "");
 		if (message.length() == 0) {
 			message.append("낫싱");
 		}
