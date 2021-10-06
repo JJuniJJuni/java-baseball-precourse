@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.dto.BaseBall;
 import baseball.dto.BaseBallGame;
 import baseball.service.BaseBallService;
 import baseball.view.BaseBallView;
@@ -21,14 +22,14 @@ public class BaseBallController {
 	}
 
 	private boolean turn() {
-		String input = BaseBallView.inputNumber();
+		BaseBall input = new BaseBall(BaseBallView.inputNumber());
 		if (isNotRightInput(input)) {
 			return true;
 		}
 		return false;
 	}
 
-	private boolean isNotRightInput(String input) {
+	private boolean isNotRightInput(BaseBall input) {
 		try {
 			baseBallService.validateInputValue(input);
 		} catch (IllegalArgumentException e) {

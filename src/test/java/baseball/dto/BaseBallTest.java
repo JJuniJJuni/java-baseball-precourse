@@ -21,24 +21,24 @@ public class BaseBallTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"1", "23"})
 	public void 길이_오류_검증(String input) {
-		assertFalse(BaseBall.isRightLength(input));
+		assertFalse((new BaseBall(input)).isRightLength());
 	}
 
 	@ParameterizedTest
 	@ValueSource(strings = {"123", "456"})
 	public void 길이_검증(String input) {
-		assertTrue(BaseBall.isRightLength(input));
+		assertTrue((new BaseBall(input)).isRightLength());
 	}
 
 	@ParameterizedTest
 	@ValueSource(strings = {"1ac", "가d2"})
 	public void 숫자_오류_검증(String input) {
-		assertFalse(BaseBall.isNumberFormat(input));
+		assertFalse((new BaseBall(input)).isNumberFormat());
 	}
 
 	@ParameterizedTest
 	@ValueSource(strings = {"1", "45"})
 	public void 숫자_검증(String input) {
-		assertTrue(BaseBall.isNumberFormat(input));
+		assertTrue((new BaseBall(input)).isNumberFormat());
 	}
 }
