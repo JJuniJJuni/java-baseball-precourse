@@ -6,7 +6,7 @@ import java.util.Set;
 import nextstep.utils.Randoms;
 
 public class BaseBall {
-	private static final int DIGIT_COUNT = 3;
+	public static final int DIGIT_COUNT = 3;
 	private static final int MIN_DIGIT = 1;
 	private static final int MAX_DIGIT = 9;
 	private String number;

@@ -1,6 +1,8 @@
 package baseball.service;
 
 import baseball.dto.BaseBall;
+import baseball.dto.BaseBallGame;
+import baseball.dto.Score;
 
 public class BaseBallService {
 
@@ -17,5 +19,9 @@ public class BaseBallService {
 			throw new IllegalArgumentException("중복된 숫자가 존재합니다");
 		}
 		return true;
+	}
+
+	public Score compute(BaseBallGame baseBallGame, String userInput, String answer) {
+		return baseBallGame.getScore(userInput, answer);
 	}
 }
