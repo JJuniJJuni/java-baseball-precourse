@@ -38,4 +38,13 @@ public class BaseBall {
 		}
 		return digits.length() != set.size();
 	}
+
+	public static boolean isRightLength(String digits) {
+		return digits.length() == DIGIT_COUNT;
+	}
+
+	public static boolean isNumberFormat(String input) {
+		return input.matches("^[1-9]+$");
+	}
+
 }
