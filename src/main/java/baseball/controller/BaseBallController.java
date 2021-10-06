@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.dto.BaseBall;
 import baseball.dto.BaseBallGame;
+import baseball.dto.Score;
 import baseball.service.BaseBallService;
 import baseball.view.BaseBallView;
 
@@ -26,7 +27,10 @@ public class BaseBallController {
 		if (isNotRightInput(input)) {
 			return true;
 		}
-		return false;
+		if (!processInput(input)) {
+			return false;
+		}
+		return true;
 	}
 
 	private boolean isNotRightInput(BaseBall input) {
@@ -37,6 +41,15 @@ public class BaseBallController {
 			return true;
 		}
 		return false;
+	}
+
+	private boolean processInput(BaseBall input) {
+		Score score = baseBallService.compute(baseBallGame, input);
+		if (baseBallGame.isEnd()) {
+			return false;
+		}
+		BaseBallView.score(score);
+		return true;
 	}
 
 	private void start() {

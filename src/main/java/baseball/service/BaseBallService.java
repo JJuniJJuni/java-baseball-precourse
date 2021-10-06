@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.constant.BaseBallConstant;
 import baseball.dto.BaseBall;
 import baseball.dto.BaseBallGame;
 import baseball.dto.Score;
@@ -22,7 +23,10 @@ public class BaseBallService {
 	}
 
 	public Score compute(BaseBallGame baseBallGame, BaseBall userInput) {
-		Score score = baseBallGame.getScore(userInput.getNumber(), baseBallGame.getBaseBall().toString());
+		Score score = baseBallGame.getScore(userInput.getNumber(), baseBallGame.getBaseBall().getNumber());
+		if (score.getStrike() == BaseBallConstant.DIGIT_COUNT) {
+			baseBallGame.setState(BaseBallConstant.GameState.END);
+		}
 		return score;
 	}
 }

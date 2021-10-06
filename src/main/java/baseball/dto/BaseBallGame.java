@@ -5,7 +5,7 @@ import baseball.constant.BaseBallConstant;
 public class BaseBallGame {
 
 	private BaseBallConstant.GameState state;
-	private BaseBall baseBall;
+	private final BaseBall baseBall;
 
 	public BaseBallGame() {
 		this.state = BaseBallConstant.GameState.START;
@@ -50,5 +50,17 @@ public class BaseBallGame {
 
 	public Score getScore(String userInput, String answer) {
 		return new Score(strikeCount(userInput, answer), ballCount(userInput, answer));
+	}
+
+	public void setState(BaseBallConstant.GameState state) {
+		this.state = state;
+	}
+
+	public BaseBallConstant.GameState getState() {
+		return this.state;
+	}
+
+	public boolean isEnd() {
+		return this.state == BaseBallConstant.GameState.END;
 	}
 }
