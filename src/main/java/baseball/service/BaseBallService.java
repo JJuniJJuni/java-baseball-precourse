@@ -22,6 +22,7 @@ public class BaseBallService {
 	}
 
 	public Score compute(BaseBallGame baseBallGame, BaseBall userInput) {
-		return baseBallGame.getScore(userInput.getNumber(), baseBallGame.getBaseBall().toString());
+		Score score = baseBallGame.getScore(userInput.getNumber(), baseBallGame.getBaseBall().toString());
+		return score;
 	}
 }

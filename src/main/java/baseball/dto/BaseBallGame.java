@@ -1,16 +1,14 @@
 package baseball.dto;
 
+import baseball.constant.BaseBallConstant;
+
 public class BaseBallGame {
 
-	enum State {
-		START, END;
-	}
-
-	private State state;
+	private BaseBallConstant.GameState state;
 	private BaseBall baseBall;
 
 	public BaseBallGame() {
-		this.state = State.START;
+		this.state = BaseBallConstant.GameState.START;
 		this.baseBall = BaseBall.randomBaseBall();
 	}
 
@@ -20,7 +18,7 @@ public class BaseBallGame {
 
 	public static int strikeCount(String answer, String userInput) {
 		int cnt = 0;
-		for (int i = 0; i < BaseBall.DIGIT_COUNT; i++) {
+		for (int i = 0; i < BaseBallConstant.DIGIT_COUNT; i++) {
 			cnt += isStrike(answer, userInput, i);
 		}
 		return cnt;
@@ -32,7 +30,7 @@ public class BaseBallGame {
 
 	public static int ballCount(String answer, String userInput) {
 		int cnt = 0;
-		for (int i = 0; i < BaseBall.DIGIT_COUNT; i++) {
+		for (int i = 0; i < BaseBallConstant.DIGIT_COUNT; i++) {
 			cnt += containSameChar(answer, userInput, i);
 		}
 		return cnt;
@@ -40,7 +38,7 @@ public class BaseBallGame {
 
 	private static int containSameChar(String answer, String userInput, int idx) {
 		int cnt = 0;
-		for (int i = 0; i < BaseBall.DIGIT_COUNT; i++) {
+		for (int i = 0; i < BaseBallConstant.DIGIT_COUNT; i++) {
 			cnt += isBall(answer, userInput, idx, i);
 		}
 		return cnt;

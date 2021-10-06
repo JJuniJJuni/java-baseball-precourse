@@ -3,12 +3,11 @@ package baseball.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import baseball.constant.BaseBallConstant;
 import nextstep.utils.Randoms;
 
 public class BaseBall {
-	public static final int DIGIT_COUNT = 3;
-	private static final int MIN_DIGIT = 1;
-	private static final int MAX_DIGIT = 9;
+
 	private String number;
 
 	public BaseBall(String number) {
@@ -17,7 +16,7 @@ public class BaseBall {
 
 	public static BaseBall randomBaseBall() {
 		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < DIGIT_COUNT; i++) {
+		for (int i = 0; i < BaseBallConstant.DIGIT_COUNT; i++) {
 			result.append(randomDigit(result.toString()));
 		}
 		return new BaseBall(result.toString());
@@ -26,7 +25,7 @@ public class BaseBall {
 	private static String randomDigit(String result) {
 		String digit;
 		do {
-			digit = String.valueOf(Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT));
+			digit = String.valueOf(Randoms.pickNumberInRange(BaseBallConstant.MIN_DIGIT, BaseBallConstant.MAX_DIGIT));
 		} while (isSameDigit(result + digit));
 		return digit;
 	}
@@ -40,7 +39,7 @@ public class BaseBall {
 	}
 
 	public boolean isRightLength() {
-		return this.number.length() == DIGIT_COUNT;
+		return this.number.length() == BaseBallConstant.DIGIT_COUNT;
 	}
 
 	public boolean isNumberFormat() {
